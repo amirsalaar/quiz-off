@@ -16,7 +16,7 @@ class QuizzesController < ApplicationController
 
     def show
         @question = Question.new
-        @questions = @quiz.questions.order(created_at: desc:)
+        @questions = @quiz.questions.order(created_at: :desc)
     end
 
     def index
