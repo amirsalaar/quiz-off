@@ -1,24 +1,26 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Quiz Off is an interactive quiz making and taking platform.
 
-Things you may want to cover:
 
-* Ruby version
+Tech used:
 
-* System dependencies
+Ruby 2.6.1
 
-* Configuration
+Postgreseql
 
-* Database creation
+Bootstrap
 
-* Database initialization
+Bcrypt
 
-* How to run the test suite
+Cancancan
 
-* Services (job queues, cache servers, search engines, etc.)
+Getting set up:
 
-* Deployment instructions
+Database creation -
+rails db:create
+rails db:migrate
 
-* ...
+Database initialization -
+rails db:seed
+

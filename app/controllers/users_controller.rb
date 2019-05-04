@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:edit, :update]
   def new
-    user = User.new
+    @user = User.new
   end
 
   def create
-    user = User.new user_params
-    if user.save
+    @user = User.new user_params
+    if @user.save
+      flash[:success] = "Registered successfully!"
       redirect_to root_path
     else
       render :new
