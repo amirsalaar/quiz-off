@@ -10,10 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_04_173120) do
+ActiveRecord::Schema.define(version: 2019_05_04_174118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.text "body"
+    t.bigint "question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "attempts", force: :cascade do |t|
+    t.integer "score"
+    t.bigint "user_id"
+    t.bigint "quiz_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quiz_id"], name: "index_attempts_on_quiz_id"
+    t.index ["user_id"], name: "index_attempts_on_user_id"
+  end
+
+  create_table "correct_answers", force: :cascade do |t|
+    t.bigint "question_id"
+    t.bigint "answer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_correct_answers_on_answer_id"
+    t.index ["question_id"], name: "index_correct_answers_on_question_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.text "body"
+    t.bigint "quiz_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quiz_id"], name: "index_questions_on_quiz_id"
+  end
 
   create_table "quizzes", force: :cascade do |t|
     t.string "title"
@@ -38,5 +73,11 @@ ActiveRecord::Schema.define(version: 2019_05_04_173120) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "answers", "questions"
+  add_foreign_key "attempts", "quizzes"
+  add_foreign_key "attempts", "users"
+  add_foreign_key "correct_answers", "answers"
+  add_foreign_key "correct_answers", "questions"
+  add_foreign_key "questions", "quizzes"
   add_foreign_key "quizzes", "users"
 end
