@@ -11,14 +11,22 @@ class Ability
       alias_action :create, :read, :update, :destroy, to: :crud 
       #can :crud, Quiz, user_id: user.id
 
-      if user.role == 1 
+      if user.role == 1 #teacher
         can (:crud, Quiz) do |quiz|
           quiz.user = user
         end
       end 
 
-      can :create, Attempt, user_id: user.id
+      if user.role == 2 #student
+        can :create, Attempt, user_id: user.id
+      end
 
+      if user.role == 3 #admin
+        can (:crud, Quiz) do |quiz|
+          quiz.user = user
+        end
+        can :create, Attempt, user_id: user.id
+      end
   end
 end
 
