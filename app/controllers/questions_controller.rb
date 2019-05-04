@@ -14,11 +14,6 @@ class QuestionsController < ApplicationController
             render :new 
         end
     end
-        
-    def index
-        @quiz = Quiz.find(params[:quiz_id])
-        @questions = @quiz.questions.order(id: :asc)
-    end
     
     def edit
         # ability to edit
