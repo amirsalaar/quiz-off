@@ -1,0 +1,9 @@
+<div class="quiz_title">
+    <h2><%= @quiz.title %></h2>
+</div>
+
+<%= @questions.each do |question| %>
+<div class="q">
+    <%= link_to question.title, quiz_question_path %>
+</div>
+<% end %>
