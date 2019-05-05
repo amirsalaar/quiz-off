@@ -1,7 +1,6 @@
-<form>
-    <div class="card form_card">
+<div class="card form_card">
     <div class="form">
-        <%= form_with(model: [@question,@answer], url: quiz_questions_path, local: true) do |form| %>
+        <%= form_with(model: @question, url: quiz_questions_path, local: true) do |form| %>
 
         <% if @question.errors.present? %>
             <p class="form-errors">
@@ -10,17 +9,20 @@
         <% end %>
     
         <div class="form-group">
-            <%= form.label :body, class:"form-label" %>
+            <%= form.label :body, 'Quesion?', class:"form-label" %>
             <%= form.text_field :body, class:"form-control"%>
         </div>
 
         <div class="form-group">
-            <%= form.label :answer_body, class:"form-label" %>
-            <%= form.text_field :answer_body, class:"form-control body_form" %>
+            <%= form.fields_for :answers, Answer.new do |ans_form| %>
+                <fieldset>
+                    <%= ans_form.label :body, 'Answer', class:"form-label" %>
+                    <%= ans_form.text_field :body, class:"form-control" %>
+                </fieldset>
+            <% end %>
         </div>
 
         <%= form.submit class: 'btn btn-primary' %>
         <% end %>
     </div>
-    </div>
-</form> 
+</div>
