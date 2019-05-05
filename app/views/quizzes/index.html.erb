@@ -3,7 +3,7 @@
 <ul>
     <% @quizzes.each do |quiz| %>
         <li>
-            <%= link_to(quiz.title, question_path(quiz)) %> <br>
+            <%= link_to(quiz.title, quiz_path(quiz)) %> <br>
             <small>
                 Created <%= time_ago_in_words(quiz.created_at) %> ago
             </small>
