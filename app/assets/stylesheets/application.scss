@@ -18,18 +18,22 @@
  *= require_self
  */
 
- .body{
-     height: 100%;
+ body{
+     background-image: url("quiz");
+     margin: 0 auto 0 auto;
+     width: 100%;
+     background-repeat: no-repeat;
+ }
+
+ img{
+     width: 100%;
+     height: auto;
  }
 
 .container{
     padding: 0;
     margin: 0em 1em;
-}
-
-.banner-image{
-    padding: 0em .5em;
-    max-width: 100%;
+    margin: 0 auto 0 auto;
 }
 
 .banner-text {
