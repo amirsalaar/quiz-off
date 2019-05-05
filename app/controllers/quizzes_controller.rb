@@ -15,7 +15,6 @@ class QuizzesController < ApplicationController
     end
 
     def show
-        @question = Question.new
         @questions = @quiz.questions.order(created_at: :desc)
     end
 
