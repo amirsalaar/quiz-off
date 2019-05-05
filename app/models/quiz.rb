@@ -7,8 +7,10 @@ class Quiz < ApplicationRecord
   validates(
     :description, presence: { message: "Please enter a description"},
         length: { minimum: 10}
-  })
+  )
 
   validates(:level, presence: true)
+
+  validates()
 
 end
