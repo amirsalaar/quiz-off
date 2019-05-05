@@ -9,7 +9,8 @@ class QuestionsController < ApplicationController
         @question = Question.new question_params
         @question.user = current_user
         if @question.save
-            redirect_to quiz_path(@question.quiz)
+            # redirect somewhere
+            redirect_to quiz_questions_path	
         else
             render :new 
         end
