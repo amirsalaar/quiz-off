@@ -3,7 +3,6 @@ Quiz.destroy_all
 Question.destroy_all
 Answer.destroy_all
 Attempt.destroy_all
-CorrectAnswer.destroy_all
 User.destroy_all
 
 super_user = User.create(
