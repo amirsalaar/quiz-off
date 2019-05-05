@@ -18,13 +18,14 @@
  *= require_self
  */
 
+ 
 .banner-image{
-    background-image: url("quiz");
-    background-repeat: no-repeat;
-    margin: 0 auto 0 auto;
-    padding: 0;
-    width: 100%;
-    height: 100vh;
+    background: url("quiz") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
 }
 
 img{
@@ -33,9 +34,8 @@ img{
 }
 
 .banner{
-
-    height: 2000px;
-    width: 2000px;
+    height: 100vh;
+    margin: auto;
 }
 
 .banner-text {
@@ -43,12 +43,10 @@ img{
     position: absolute;
     padding-left: 5em;
     top: 50%;
-    left: 15%;
+    left: 5%;
     color: black;
 }
 
 .banner-text button{
     max-width: 95%;
 }
-
-
