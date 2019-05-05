@@ -1,18 +1,28 @@
 class QuizzesController < ApplicationController
     before_action :find_quiz, only: [:show, :edit, :update, :destroy]
+    before_action :find_user, only: [:new, :edit, :update, :create]
+    before_action :authorize, only: [:edit, :update, :destroy]
 
     def new
-        @quiz = Quiz.new
+        if current_user && @user.role == 1
+            @quiz = Quiz.new
+        else
+            redirect_to root_path, alert: 'Please sign in or sign up as an Instructor to create quizzes!'
+        end
     end
 
     def create
-        @quiz = Quiz.new quiz_params
-        @quiz.user = current_user
-        if @quiz.save
-            redirect_to quiz_path(@quiz.id)
-        else
-            render :new
-        end
+            @quiz = Quiz.new quiz_params
+            @quiz.user = current_user
+            if can?(:crud, @quiz)
+                if @quiz.save
+                    redirect_to quiz_path(@quiz.id)
+                else
+                    render :new
+                end
+            else
+                redirect_to root_path, alert: 'Not Authorized'
+            end
     end
 
     def show
@@ -49,8 +59,13 @@ class QuizzesController < ApplicationController
     def find_quiz
       @quiz = Quiz.find(params[:id])
     end
+
+    def find_user
+        @user = User.find(current_user.id)
+      end
   
     def authorize
         redirect_to root_path, alert: 'Not Authorized' unless can?(:crud, @quiz)
     end
+
 end

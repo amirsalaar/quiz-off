@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :change_password, :update_password, :dashboard]
   before_action :find_user, only: [:edit, :update, :change_password, :update_password, :dashboard]
+  before_action :authorize, only: [:dashboard]
 
   def new
     @user = User.new
@@ -8,7 +9,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new user_params
-    
+
     if @user.save
       session[:user_id] = @user.id
       flash[:success] = "Registion successful!"
@@ -31,6 +32,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def dashboard
+    @quizzes = Quiz.order(created_at: :desc)
+    @created_quizzes = Quiz.order(created_at: :desc).where( user_id: @user.id )
+    @attempted_quizzes = Attempt.order(created_at: :desc).where( user_id: @user.id )
+  end
+  
   def change_password
     
   end
@@ -49,11 +56,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def dashboard
-    @quizzes = Quiz.order(created_at: :desc)
-    @created_quizzes = Quiz.order(created_at: :desc).where( user_id: @user.id )
-    @attempted_quizzes = Attempt.order(created_at: :desc).where( user_id: @user.id )
-  end
 
   private
 
@@ -80,4 +82,7 @@ class UsersController < ApplicationController
     end
   end
   
+  def authorize
+    redirect_to root_path, alert: 'Not Authorized' unless can?(:crud, @user)
+  end
 end
