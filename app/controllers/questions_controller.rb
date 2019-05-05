@@ -20,7 +20,11 @@ class QuestionsController < ApplicationController
         @answer_count = 1
         # ability to edit
     end
-    
+    def show
+        @quiz = Quiz.find(params[:quiz_id]) # .questions.find(params[:id])
+        @question = @quiz.questions.find(params[:id])# Question.new question_params
+
+    end
     def update
         if @question.update question_params
             # redirect somewhere

@@ -1,0 +1,12 @@
+<section>
+    <p><strong><%= @question.body %></strong></p>
+    <%= @question.body %>
+</section>
+
+<section>
+  <h3>Answers</h3>
+  
+  <%= form_for @question.answers do |f| %>
+    <%= f.submit "Answer" %>
+  <% end %>
+</section>
