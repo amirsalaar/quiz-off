@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :update, :change_password, :update_password]
+  before_action :authenticate_user!, only: [:edit, :update, :change_password, :update_password, :dashboard]
+  before_action :find_user, only: [:edit, :update, :change_password, :update_password, :dashboard]
 
-  before_action :find_user, only: [:edit, :update, :change_password, :update_password]
   def new
     @user = User.new
   end
@@ -48,7 +48,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def dashboard
+
+  end
+
   private
+
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :role)
   end
