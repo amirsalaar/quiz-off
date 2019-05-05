@@ -8,7 +8,7 @@ class Ability
       user ||= User.new # guest user (not logged in)
     
       alias_action :create, :read, :update, :destroy, to: :crud 
-      can :crud, Quiz, user_id: user.id
+      #can :crud, Quiz, user_id: user.id
 
       #teacher
       can (:crud, Quiz) do |quiz|
