@@ -24,31 +24,26 @@
             </li>
           </ul>
           <ul class="navbar-nav ml-auto">
-            <%# if user_signed_in? %>
+            <% if user_signed_in? %>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Hello <%# current_user.first_name %>
+                  Hello <strong><%= current_user.first_name %></strong>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <%# link_to 'Favourite Products', favourites_user_path(current_user), class: 'dropdown-item'%>
+                  <%= link_to 'Edit Profile', edit_user_path(current_user), class: 'dropdown-item'%>
                 </div>
               </li>
-              <%# if current_user.is_admin? %>
-                <li class="nav-item">
-                  <%# link_to "Admin Panel", admin_dashboard_index_path, class: "nav-link text-success" %>
-                </li>
-              <%# end %>
               <li class="nav-item">
-                <%# link_to "Sign Out", session_path, method: :delete, data: {confirm: "Are you sure you want to log out?"} , class: "nav-link text-warning" %>
+                <%= link_to "Sign Out", session_path, method: :delete, data: {confirm: "Are you sure you want to log out?"}, class: "nav-link text-warning" %>
               </li>
-            <%# else %>
+            <% else %>
               <li class="nav-item">
                 <%= link_to 'Sign In', new_session_path, class: "nav-link" %>
               </li>
               <li class="nav-item">
                 <%= link_to 'Sign Up', new_user_path, class: "nav-link" %>
               </li>
-            <%# end %>
+            <% end %>
           </ul>
         </div>
       </nav>
