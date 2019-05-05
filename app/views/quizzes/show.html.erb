@@ -2,8 +2,8 @@
     <h2><%= @quiz.title %></h2>
 </div>
 
-<%= @questions.each do |question| %>
+<% @questions.each do |question| %>
 <div class="q">
-    <%= link_to question.body, quiz_question_path %>
+    <%= link_to question.body, quiz_question_path(question.quiz,question) %>
 </div>
 <% end %>
