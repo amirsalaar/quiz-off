@@ -6,11 +6,10 @@ class QuestionsController < ApplicationController
     end
 
     def create
-        # render json: params
         @question = Question.new question_params
         @question.user = current_user
         if @question.save
-            # redirect somewhere
+            redirect_to quiz_path(@question.quiz)
         else
             render :new 
         end
@@ -20,14 +19,15 @@ class QuestionsController < ApplicationController
         @answer_count = 1
         # ability to edit
     end
+
     def show
         @quiz = Quiz.find(params[:quiz_id]) # .questions.find(params[:id])
         @question = @quiz.questions.find(params[:id])# Question.new question_params
-
     end
+
     def update
         if @question.update question_params
-            # redirect somewhere
+            redirect_to quiz_question_path(@question)
         else
             render :edit
         end
@@ -35,7 +35,7 @@ class QuestionsController < ApplicationController
 
     def destroy
         @question.destroy
-        # redirect somewhere
+        redirect_to quiz_path(@question.quiz_id)
     end
 
     private
