@@ -11,6 +11,7 @@ class QuestionsController < ApplicationController
         @question.user = current_user
         if @question.save
             # redirect somewhere
+            redirect_to quiz_questions_path	
         else
             render :new 
         end
