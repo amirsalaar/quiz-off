@@ -11,6 +11,4 @@ class Quiz < ApplicationRecord
 
   validates(:level, presence: true)
 
-  validates()
-
 end
