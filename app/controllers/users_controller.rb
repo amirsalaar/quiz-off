@@ -49,7 +49,10 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-
+    @user = current_user
+    @quizzes = Quiz.order(created_at: :desc)
+    @created_quizzes = Quiz.order(created_at: :desc).where( user_id: @user.id )
+    @attempted_quizzes = Attempt.order(created_at: :desc).where( user_id: @user.id )
   end
 
   private
