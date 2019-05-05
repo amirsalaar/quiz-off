@@ -6,6 +6,7 @@ class QuestionsController < ApplicationController
     end
 
     def create
+        # render json: params
         @question = Question.new question_params
         @question.user = current_user
         if @question.save
@@ -16,6 +17,7 @@ class QuestionsController < ApplicationController
     end
     
     def edit
+        @answer_count = 1
         # ability to edit
     end
     
