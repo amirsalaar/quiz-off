@@ -8,9 +8,10 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new user_params
+    
     if @user.save
       session[:user_id] = @user.id
-      flash[:success] = "Registered successfully!"
+      flash[:success] = "Registion successful!"
       session[:user_id] = @user.id
       redirect_to root_path
     else
@@ -23,7 +24,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update user_params
-      flash[:success] = "Your profile updated successfully!"
+      flash[:success] = "Your profile was updated successfully!"
       redirect_to root_path
     else
       render :edit
@@ -49,7 +50,6 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-    @user = current_user
     @quizzes = Quiz.order(created_at: :desc)
     @created_quizzes = Quiz.order(created_at: :desc).where( user_id: @user.id )
     @attempted_quizzes = Attempt.order(created_at: :desc).where( user_id: @user.id )
@@ -75,7 +75,7 @@ class UsersController < ApplicationController
         render :change_password
       end
     else
-      flash[:danger] = "Password confirmation does not match to your new password!"
+      flash[:danger] = "Password confirmation does not match new password!"
       render :change_password
     end
   end
