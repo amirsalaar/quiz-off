@@ -1,12 +1,13 @@
 class QuizzesController < ApplicationController
     before_action :find_quiz, only: [:show, :edit, :update, :destroy]
+
     def new
         @quiz = Quiz.new
     end
 
     def create
         @quiz = Quiz.new quiz_params
-        # @quiz.user = current_user
+        @quiz.user = current_user
         if @quiz.save
             redirect_to quiz_path(@quiz.id)
         else
@@ -15,7 +16,6 @@ class QuizzesController < ApplicationController
     end
 
     def show
-        @question = Question.new
         @questions = @quiz.questions.order(created_at: :desc)
     end
 

@@ -10,22 +10,31 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  */
-@import "bootstrap";
-@import "font-awesome-sprockets";
-@import "font-awesome";
- /*
+ @import "bootstrap";
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
+  /*
  *= require_tree .
  *= require_self
  */
+@import "main.scss";
 
- .body{
-     height: 100%;
+ body{
+     background-image: url("quiz");
+     margin: 0 auto 0 auto;
+     width: 100%;
+     background-repeat: no-repeat;
  }
 
-.container{
-    padding: 0;
-    margin: 0em 1em;
-}
+ img{
+     width: 100%;
+     height: auto;
+ }
+
+// .container{
+//     padding: 0;
+//     margin: 0em 1em;
+// }
 
 .banner-image{
     padding: 0em .5em;

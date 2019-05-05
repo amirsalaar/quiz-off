@@ -1,0 +1,37 @@
+<section>
+    <p><strong><%= @question.body %></strong></p>
+    <%= @question.body %>
+</section>
+
+<section>
+  <h3>Answers</h3>
+  
+  <%= form_with(model: @answer, local: true) do |form| %>
+    <div class="form-group">
+            <%= form.label 'Answer choice', class:"answer-label" %> <br>
+
+            <div class="custom-control custom-radio custom-control-inline">
+                <%= form.radio_button :level, 1 %>
+                <%= form.label :level,  'Beginner', value: 1, class:"answer-radio" %>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <%= form.radio_button :level, 2 %>
+                <%= form.label :level,  'Intermadiate', value: 2, class:"answer-radio"%>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <%= form.radio_button :level, 3 %>
+                <%= form.label :level,  'Advanced', value: 3, class:"answer-radio"%>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <%= form.radio_button :level, 4 %>
+                <%= form.label :level,  'Advanced', value: 4, class:"answer-radio"%>
+            </div>
+
+        </div>
+
+    <%= form.submit "Answer" %>
+
+    <% end %>
+
+</section>
+
