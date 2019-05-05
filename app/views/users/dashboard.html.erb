@@ -1,0 +1,47 @@
+<div class="quiz-title">
+    <h1 class="display-4"><i class="far fa-question-circle"></i>List Of Quizzes<i class="far fa-question-circle"></i></h1>
+</div>
+<div class="list_quizzes">
+<!--    <h1 class="display-4"><i class="far fa-question-circle"></i>List Of Quizzes<i class="far fa-question-circle"></i></h1> -->
+    <% @quizzes.each do |quiz| %>
+        <div class="card my-3">
+            <div class="card-body quiz-card">
+                <div class="card-title">
+                <%= link_to quiz.title, quiz_path(quiz) %> <br />
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>
+
+<div class="quiz-title">
+    <h1 class="display-4"><i class="far fa-question-circle"></i>List Of Created Quizzes<i class="far fa-question-circle"></i></h1>
+</div>
+<div class="list_quizzes">
+<!--    <h1 class="display-4"><i class="far fa-question-circle"></i>List Of Quizzes<i class="far fa-question-circle"></i></h1> -->
+    <% @created_quizzes.each do |quiz| %>
+        <div class="card my-3">
+            <div class="card-body quiz-card">
+                <div class="card-title">
+                <%= link_to quiz.title, quiz_path(quiz) %> <br />
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>
+
+<div class="attempted-quiz-title">
+    <h1 class="display-4"><i class="far fa-question-circle"></i>List Of Attempted Quizzes<i class="far fa-question-circle"></i></h1>
+</div>
+<div class="list_attempted_quizzes">
+<!--    <h1 class="display-4"><i class="far fa-question-circle"></i>List Of Quizzes<i class="far fa-question-circle"></i></h1> -->
+    <% @attempted_quizzes.each do |quiz| %>
+        <div class="card my-3">
+            <div class="card-body quiz-card">
+                <div class="card-title">
+                <%= link_to quiz.title, quiz_path(quiz) %> <br />
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>
