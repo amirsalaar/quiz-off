@@ -11,8 +11,7 @@ super_user = User.create(
   last_name: "Snow",
   email: "js@winterfell.gov",
   password: PASSWORD,
-  role: rand(1..3),
-  total_points: rand(0..20_000)
+  role: 3
 )
 
 10.times do
@@ -23,7 +22,7 @@ super_user = User.create(
     last_name: last_name,
     email: "#{first_name.downcase}.#{last_name.downcase}@example.com",
     password: PASSWORD,
-    role: rand(1..3),
+    role: rand(1..2),
     total_points: rand(0..20_000)
   )
 end

@@ -18,4 +18,35 @@
  *= require_self
  */
 
+ .body{
+     height: 100%;
+ }
+
+.container{
+    padding: 0;
+    margin: 0em 1em;
+}
+
+.banner-image{
+    padding: 0em .5em;
+    max-width: 100%;
+}
+
+.banner-text {
+    text-align: start;
+    position: absolute;
+    padding-left: 5em;
+    top: 50%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    color: black;
+}
+
+.banner-text button{
+    max-width: 95%;
+}
+
+.link{
+    text-decoration: none;
+}
 
