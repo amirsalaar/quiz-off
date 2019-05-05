@@ -19,8 +19,16 @@
  */
 @import "main.scss";
 
- .body{
-     height: 100%;
+ body{
+     background-image: url("quiz");
+     margin: 0 auto 0 auto;
+     width: 100%;
+     background-repeat: no-repeat;
+ }
+
+ img{
+     width: 100%;
+     height: auto;
  }
 
 // .container{
