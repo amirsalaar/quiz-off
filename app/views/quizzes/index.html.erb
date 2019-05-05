@@ -2,15 +2,18 @@
 
 <ul>
     <% @quizzes.each do |quiz| %>
-        <li>
-            <%= link_to(quiz.title, quiz_path(quiz)) %> <br>
-            <small>
-                Created <%= time_ago_in_words(quiz.created_at) %> ago
-            </small>
-            |
-            <small>
-                <%= pluralize(quiz.points, "point") %>
-            </small>
-        </li>
+        <div class="col-xs-12 col-md-6 col-xl-4 my-3">
+            <div class="card">
+                <div class="card-body card-height">
+                    <h4><%= link_to(quiz.title, quiz_path(quiz)) %></h4>
+                    <p>
+                        <%= pluralize(quiz.points, "point") %>
+                    </p>
+                    <small>
+                        Created <%= time_ago_in_words(quiz.created_at) %> ago
+                    </small>
+                </div>
+            </div>
+        </div>
     <% end %>
 </ul>
