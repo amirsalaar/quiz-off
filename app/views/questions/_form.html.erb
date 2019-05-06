@@ -18,6 +18,7 @@
                 <fieldset>
                     <%= ans_form.label :body, 'Answer', class:"form-label" %>
                     <%= ans_form.text_field :body, class:"form-control" %>
+                    <%= ans_form.hidden_field :is_correct, value: true %>
                 </fieldset>
             <% end %>
         </div>

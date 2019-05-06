@@ -13,7 +13,11 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
 
   resources :quizzes do
-    resources :questions
+    resources :questions do
+      member do
+        post :answer
+      end
+    end
   end
 
 end
