@@ -1,6 +1,8 @@
 <div class="form-padding">
-    <h1>Quizzes</h1>
-    <button><%= link_to 'Create Quiz', new_quiz_path %></button>
+    <div class="title-zone">
+        <h1>Quizzes</h1>
+        <button class="btn btn-warning new-quiz-btn"><%= link_to 'Create Quiz', new_quiz_path %></button>
+    </div>
     <ul>
         <% @quizzes.each do |quiz| %>
             <div class="my-3">
