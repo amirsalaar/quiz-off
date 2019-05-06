@@ -6,13 +6,14 @@
             <h1 class="display-4">Leaderboard</h1>
         </div>
 	</div>
-		<hr>
-  
+		<hr color="#ffc107">
+  <div class="leader-box">
+  <div class="total-box">
     <ul>
         <% @users.each do |loopeduser| %>
             <% if loopeduser.role == 2 %>
                 <div class="my-3">
-                    <div class="card">
+                    <div class="card total-card border-warning">
                         <div class="card-body card-height">
                             <h4><%= loopeduser.first_name %> <%= loopeduser.last_name %>   <%= pluralize(loopeduser.total_points, "points")%></h4> 
                         </div>
@@ -21,9 +22,12 @@
             <% end %>
         <% end %>
     </ul>
+    </div>
+
+    <div class="you-box">
     <ul>
         <div class="my-3">
-            <div class="card">
+            <div class="card you-card border-warning">
                 <div class="card-body card-height">
                     <h4>YOU 
                     <p>
@@ -34,5 +38,7 @@
             </div>
         </div>
     </ul>
+    </div>
+    </div>
  
 </div>
