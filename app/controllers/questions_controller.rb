@@ -20,6 +20,7 @@ class QuestionsController < ApplicationController
             @question = Question.new question_params
             @question.quiz = @quiz
             @question.quiz.user = current_user
+            @question.generate_fake_answer
             if @question.save
                 redirect_to quiz_path(@quiz)	
             else
