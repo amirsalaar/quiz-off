@@ -7,7 +7,8 @@ class QuizzesController < ApplicationController
         if current_user && @user.role == 1
             @quiz = Quiz.new
         else
-            redirect_to root_path, alert: 'Please sign in or sign up as an Instructor to create quizzes!'
+            redirect_to root_path
+            flash[:danger] = 'Please sign in or sign up as an Instructor to create quizzes!'
         end
     end
 
@@ -21,7 +22,8 @@ class QuizzesController < ApplicationController
                     render :new
                 end
             else
-                redirect_to root_path, alert: 'Not Authorized'
+                redirect_to root_path
+                flash[:danger] = 'Not Authorized'
             end
     end
 
@@ -65,7 +67,8 @@ class QuizzesController < ApplicationController
       end
   
     def authorize
-        redirect_to root_path, alert: 'Not Authorized' unless can?(:crud, @quiz)
+        redirect_to root_path unless can?(:crud, @quiz)
+        flash[:danger] = 'Not Authorized' 
     end
 
 end
