@@ -1,9 +1,9 @@
 PASSWORD = "supersecret"
-Quiz.destroy_all
 Question.destroy_all
 Answer.destroy_all
 Attempt.destroy_all
 User.destroy_all
+Quiz.destroy_all
 
 super_user = User.create({
   first_name: "Jon",
