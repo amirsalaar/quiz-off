@@ -1,0 +1,41 @@
+<ul class="nav nav-tabs"> 
+        <li class="nav-tabs active"><a href="#attempts" data-toggle="tab">Attempted Quizzes</a></li>
+        <li class="nav-tabs"><a href="#all-quizzes" data-toggle="tab">All Quizzes</a></li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="attempts">
+        <div class="list_quizzes">
+            <% @attempted_quizzes.each do |attempted_quiz| %>
+                <div class="card my-5">
+                    <div class="card-body quiz-card">
+                        <div class="card-title">
+                            <%= link_to attempted_quiz.quiz.title, quiz_path(attempted_quiz.quiz) %>
+                            <br>
+                            <small>
+                                <%= pluralize(attempted_quiz.quiz.points, 'Point') %>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+    <div class="tab-pane active" id="all-quizzes">
+        <div class="list_quizzes">
+            <% @quizzes.each do |quiz| %>
+                <div class="card my-5">
+                    <div class="card-body quiz-card">
+                        <div class="card-title">
+                            <%= link_to quiz.title, quiz_path(quiz) %>
+                            <br>
+                            <small>
+                              <%= pluralize(quiz.points, 'Point') %>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
