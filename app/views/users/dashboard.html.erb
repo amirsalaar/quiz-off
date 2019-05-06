@@ -1,56 +1,98 @@
 <% if @user.role == 1 %>
 
-    <div class="quiz-title">
-        <h1 class="display-4">My Quizzes</h1>
-    </div>
-    <div class="list_quizzes">
-        <% @created_quizzes.each do |quiz| %>
-                <div class="card-body quiz-card">
-                    <div class="card-title">
-                        <%= link_to quiz.title, quiz_path(quiz) %> <br />
-                        Points:  <%= quiz.points %>
-                    </div>
+    <ul class="nav nav-tabs"> 
+        <li class="active"><a href="#firsttab" data-toggle="tab">My Quizzes</a></li>
+        <li><a href="#secondtab" data-toggle="tab">Attempted Quizzes</a></li>
+        <li><a href="#thirdtab" data-toggle="tab">All Quizzes</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="firsttab">
+                <div class="list_quizzes">
+                    <% @created_quizzes.each do |quiz| %>
+                       <div class="card my-5">
+                            <div class="card-body quiz-card">
+                                <div class="card-title">
+                                    <%= link_to quiz.title, quiz_path(quiz) %> <br />
+                                    Points:  <%= quiz.points %>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
                 </div>
-            </div>
-        <% end %>
-    </div>
-
-    <div class="attempted-quiz-title">
-        <h1 class="display-4">Attempted Quizzes</h1>
-    </div>
-    <div class="list_attempted_quizzes">
-        <% @attempted_quizzes.each do |quiz| %>
-            <div class="card my-3">
-                <div class="card-body quiz-card">
-                    <div class="card-title">
-                        <%= link_to quiz.title, quiz_path(quiz) %> <br />
-                        Score:  <%= quiz.score %>
-                    </div>
+        </div>
+        <div class="tab-pane active" id="secondtab">
+            <%#<a class="nav-link active" href="#" data-toggle="tab"><h1 class="display-6">My Quizzes</h1></a> %>
+                <div class="list_quizzes">
+                    <% @attempted_quizzes.each do |quiz| %>
+                       <div class="card my-5">
+                            <div class="card-body quiz-card">
+                                <div class="card-title">
+                                    <%= link_to quiz.title, quiz_path(quiz) %> <br />
+                                    Points:  <%= quiz.points %>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
                 </div>
-            </div>
-        <% end %>
+        </div>
+        <div class="tab-pane active" id="thirdtab">
+            <%#<a class="nav-link active" href="#" data-toggle="tab"><h1 class="display-6">My Quizzes</h1></a> %>
+                <div class="list_quizzes">
+                    <% @quizzes.each do |quiz| %>
+                       <div class="card my-5">
+                            <div class="card-body quiz-card">
+                                <div class="card-title">
+                                    <%= link_to quiz.title, quiz_path(quiz) %> <br />
+                                    Points:  <%= quiz.points %>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+        </div>
     </div>
 
 <% end %>
 
 <% if @user.role == 2 %>
 
-    <div class="attempted-quiz-title">
-        <h1 class="display-4"><i class="far fa-question-circle"></i>Attempted Quizzes<i class="far fa-question-circle"></i></h1>
-    </div>
-    <div class="list_attempted_quizzes">
-        <% @attempted_quizzes.each do |quiz| %>
-            <div class="card my-3">
-                <div class="card-body quiz-card">
-                    <div class="card-title">
-                        <%= link_to quiz.title, quiz_path(quiz) %> <br />
-                        Score:  <%= quiz.score %>
-                    </div>
+
+    <ul class="nav nav-tabs"> 
+          <li><a href="#firstab" data-toggle="tab">Attempted Quizzes</a></li>
+          <li><a href="#secondtab" data-toggle="tab">All Quizzes</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane active" id="firsttab">
+            <%#<a class="nav-link active" href="#" data-toggle="tab"><h1 class="display-6">My Quizzes</h1></a> %>
+                <div class="list_quizzes">
+                    <% @attempted_quizzes.each do |quiz| %>
+                       <div class="card my-5">
+                            <div class="card-body quiz-card">
+                                <div class="card-title">
+                                    <%= link_to quiz.title, quiz_path(quiz) %> <br />
+                                    Points:  <%= quiz.points %>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
                 </div>
-            </div>
-        <% end %>
+        </div>
+        <div class="tab-pane active" id="secondtab">
+            <%#<a class="nav-link active" href="#" data-toggle="tab"><h1 class="display-6">My Quizzes</h1></a> %>
+                <div class="list_quizzes">
+                    <% @quizzes.each do |quiz| %>
+                       <div class="card my-5">
+                            <div class="card-body quiz-card">
+                                <div class="card-title">
+                                    <%= link_to quiz.title, quiz_path(quiz) %> <br />
+                                    Points:  <%= quiz.points %>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+        </div>
     </div>
-
 <% end %>
-
 
