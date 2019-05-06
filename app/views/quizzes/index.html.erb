@@ -13,6 +13,11 @@
                         <small>
                             Created <%= time_ago_in_words(quiz.created_at) %> ago
                         </small>
+                        <%= 
+                            link_to 'Take Quiz', 
+                            user_attempts_path(current_user, quiz: quiz), 
+                            method: :post
+                        %>
                     </div>
                 </div>
             </div>
