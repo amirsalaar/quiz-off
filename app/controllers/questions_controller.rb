@@ -1,25 +1,31 @@
 class QuestionsController < ApplicationController
     before_action :authenticate_user!, except: [:show]
     before_action :find_question, only: [ :edit, :update, :destroy, :answer]
-    before_action :find_quiz, only: [:create, :edit, :update, :answer]
+    before_action :find_quiz, only: [:new, :create, :edit, :update, :answer]
     before_action :authorize, only: [:create, :update, :destroy]
 
 
 
     def new
+        # byebug
+        if @quiz.user_id == current_user.id
         @question = Question.new
+        else
+            redirect_to root_path
+            flash[:danger] = 'Not Authorized'
+        end
     end
 
     def create
-        @question = Question.new question_params
-        @question.quiz = @quiz
-        @question.quiz.user = current_user
-        if @question.save
-            redirect_to quiz_path(@quiz)	
-        else
-            flash[:danger] = @question.errors.full_messages.join(', ')
-            render :new 
-        end
+            @question = Question.new question_params
+            @question.quiz = @quiz
+            @question.quiz.user = current_user
+            if @question.save
+                redirect_to quiz_path(@quiz)	
+            else
+                flash[:danger] = @question.errors.full_messages.join(', ')
+                render :new 
+            end
     end
     
     def edit
@@ -76,7 +82,7 @@ class QuestionsController < ApplicationController
     end
 
     def authorize
-        redirect_to root_path, alert: 'Not Authorized' unless can?(:crud, @question)
+        redirect_to root_path unless can?(:crud, @quiz)
     end
 
 end
