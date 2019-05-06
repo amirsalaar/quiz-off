@@ -46,7 +46,7 @@ users = User.all
     4.times do
         list_answers << { body: (Faker::Hacker.say_something_smart)[0..15] }
     end
-    # byebug
+    list_answers[rand(3)].merge!(is_correct: true)
      question = Question.create({
        quiz_id: quiz.id,
       body: Faker::GreekPhilosophers.quote,
