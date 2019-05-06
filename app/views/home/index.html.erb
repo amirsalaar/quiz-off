@@ -6,9 +6,11 @@
         <div class="banner-text">
             <h1>Welcome to <br> Quiz-Off!</h1>
             <p>Create and take quizes here</p>
-            <button class='btn btn-warning col-12 col-md-3' >
-                <%= link_to 'Get Started', new_session_path, class: "link" %>
-            </button>
+            <% if !current_user %>
+                <button class='btn btn-warning col-12 col-md-3' >
+                    <%= link_to 'Get Started', new_session_path, class: "link" %>
+                </button>
+            <% end %>
         </div>
     </div>
 

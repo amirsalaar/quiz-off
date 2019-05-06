@@ -1,6 +1,6 @@
 class QuizzesController < ApplicationController
     before_action :find_quiz, only: [:show, :edit, :update, :destroy, :finish, :attempt]
-    before_action :find_user, only: [:new, :edit, :update, :create]
+    before_action :find_user, only: [:show, :new, :edit, :update, :create]
     before_action :authorize, only: [:edit, :update, :destroy]
 
     def new
@@ -53,9 +53,9 @@ class QuizzesController < ApplicationController
     end
 
     def finish
-        attempt = Attempt.where(quiz_id: @quiz.id, user_id: current_user.id).last
-        flash[:success] = "You got #{attempt.result} %"
-        redirect_to quizzes_path
+        attempt = Attempt.find_by(quiz_id: @quiz.id, user_id: current_user.id)
+        flash[:success] = "You got #{attempt.result}"
+        redirect_to dashboard_user_path
     end
 
     def attempt

@@ -17,6 +17,7 @@ class QuestionsController < ApplicationController
     end
 
     def create
+        @user = current_user
             @question = Question.new question_params
             @question.quiz = @quiz
             @question.quiz.user = current_user
