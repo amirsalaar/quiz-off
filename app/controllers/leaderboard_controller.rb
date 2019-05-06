@@ -1,5 +1,4 @@
 class LeaderboardController < ApplicationController
-
     before_action :authenticate_user!, :current_user
 
     def index

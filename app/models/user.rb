@@ -10,4 +10,13 @@ class User < ApplicationRecord
     def full_name
         "#{first_name} #{last_name}".strip
     end
+
+    before_validation :set_default_total_points
+
+    private
+
+    def set_default_total_points
+        self.total_points ||= 0
+    end
+
 end

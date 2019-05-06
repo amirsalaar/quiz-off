@@ -4,7 +4,8 @@
   <div class="total-box">
     <div class="row welcome text-center">
 		<div class="col-12">
-            <h1 class="display-4">Leaderboard</h1>
+            <h1 class="display-4">Leaderboard<i class="fa fa-users" aria-hidden="true"></i></h1>
+
         </div>
 	</div>
 		<hr>
@@ -29,7 +30,7 @@
         <div class="my-3">
             <div class="card you-card">
                 <div class="card-body card-height">
-                    <h4>YOU 
+                    <h4>YOU
                     <p>
                         <%= pluralize(@user.total_points, "points") %>
                     </p>

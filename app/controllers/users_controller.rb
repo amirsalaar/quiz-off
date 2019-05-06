@@ -51,6 +51,11 @@ class UsersController < ApplicationController
 
   def dashboard
     @quizzes = Quiz.order(created_at: :desc)
+    @attempt = Attempt.new(
+      user: current_user,
+      quiz: @quiz,
+      score: :null
+  )   
     #only grab created quizzes if a instructor is logged in
     if current_user.role == 1
       @created_quizzes = Quiz.order(created_at: :desc).where(user: current_user)

@@ -1,0 +1,39 @@
+
+    <% @quizzes.each do |quiz| %>
+    <div class="my-3">
+        <div class="card">
+            <div class="card-body card-height">
+                <h4><%= quiz.title %></h4>
+                <p>
+                <%= quiz.description %> 
+                </p>
+                <p>
+                    <%= pluralize(quiz.points, "point") %>
+                </p>
+                <small>
+                    Created <%= time_ago_in_words(quiz.created_at) %> ago
+                </small>
+                |
+                <%=
+                    link_to 'Take Quiz', 
+                    attempt_quiz_path(quiz), 
+                    method: :post
+                %>
+            </div>
+        </div>
+            <% if current_user.role == 1 %>
+                    <% if quiz.user == current_user.id %>
+                    <small>
+                        <%= link_to "Edit", edit_quiz_path(quiz) %>
+                    </small>
+                    <small>
+                        <%= link_to "Delete", quiz_path(quiz), method: :delete, data: {confirm: "Are you sure?"}%>
+                    </small>
+                <% end %>
+            <% end %>
+    
+    </div>
+
+<% end %>
+
+</div>

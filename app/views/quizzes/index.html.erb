@@ -10,8 +10,11 @@
         <% @quizzes.each do |quiz| %>
             <div class="my-3">
                 <div class="card">
-                    <div class="card-body card-height form_card">
-                        <h4><%= link_to(quiz.title, quiz_path(quiz)) %></h4>
+                    <div class="card-body card-height">
+                        <h4><%= quiz.title %></h4>
+                        <p>
+                        <%= quiz.description %> 
+                        </p>
                         <p>
                             <%= pluralize(quiz.points, "point") %>
                         </p>
