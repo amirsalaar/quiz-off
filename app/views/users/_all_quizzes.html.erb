@@ -1,11 +1,5 @@
+<div class="container">
 
-        <div class="row welcome text-center">
-		<div class="col-12">
-            <h1 class="display-4">Quizzes</h1>
-            <button class="btn btn-warning new-quiz-btn"><%= link_to 'Create Quiz', new_quiz_path %></button>
-            </div>
-		</div>
-		<hr>
     <ul>
         <% @quizzes.each do |quiz| %>
             <div class="my-3">
@@ -21,22 +15,27 @@
                         <small>
                             Created <%= time_ago_in_words(quiz.created_at) %> ago
                         </small>
-                        <%= 
+                        <%=
                             link_to 'Take Quiz', 
                             attempt_quiz_path(quiz), 
                             method: :post
                         %>
                     </div>
                 </div>
-            <small>
-                <%= link_to "Edit", edit_quiz_path(quiz)%>
-            </small>
-            <small>
-                <%= link_to "Delete", quiz_path(quiz), method: :delete, data: {confirm: "Are you sure?"}%>
-            </small>
+                    <% if current_user.role == 1 %>
+                         <% if quiz.user == current_user.id %>
+                            <small>
+                                <%= link_to "Edit", edit_quiz_path(quiz) %>
+                            </small>
+                            <small>
+                                <%= link_to "Delete", quiz_path(quiz), method: :delete, data: {confirm: "Are you sure?"}%>
+                            </small>
+                        <% end %>
+                    <% end %>
             
             </div>
 
         <% end %>
     </ul>
+</div>
 </div>

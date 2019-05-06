@@ -23,19 +23,7 @@
     </div>
     <div class="tab-pane active" id="all-quizzes">
         <div class="list_quizzes">
-            <% @quizzes.each do |quiz| %>
-                <div class="card my-5">
-                    <div class="card-body quiz-card">
-                        <div class="card-title">
-                            <%= link_to quiz.title, quiz_path(quiz) %>
-                            <br>
-                            <small>
-                              <%= pluralize(quiz.points, 'Point') %>
-                            </small>
-                        </div>
-                    </div>
-                </div>
-            <% end %>
+            <%= render "all_quizzes" %>
         </div>
     </div>
 </div>

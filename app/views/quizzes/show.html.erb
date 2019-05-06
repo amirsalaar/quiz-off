@@ -30,5 +30,7 @@
             </div>
         </div>
         <% end %>
-        <%= link_to 'Finish', finish_quiz_path(@quiz) %>
+        <% if @current_user.role = 2 %>
+            <%= link_to 'Finish', finish_quiz_path(@quiz) %>
+        <% end %>
 </div>
