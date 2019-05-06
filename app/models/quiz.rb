@@ -13,6 +13,8 @@ class Quiz < ApplicationRecord
 
   validates(:level, presence: true)
 
+  private 
+
   def set_default_points
     self.points ||= 0
   end
