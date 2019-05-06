@@ -10,7 +10,7 @@
         <% @quizzes.each do |quiz| %>
             <div class="my-3">
                 <div class="card">
-                    <div class="card-body card-height">
+                    <div class="card-body card-height form_card">
                         <h4><%= link_to(quiz.title, quiz_path(quiz)) %></h4>
                         <p>
                             <%= pluralize(quiz.points, "point") %>
@@ -23,14 +23,14 @@
                             attempt_quiz_path(quiz), 
                             method: :post
                         %>
+                        <br>
+                        <small>
+                            <%= link_to "Edit", edit_quiz_path(quiz)%>
+                            |
+                            <%= link_to "Delete", quiz_path(quiz), method: :delete, data: {confirm: "Are you sure?"}%>
+                        </small>
                     </div>
                 </div>
-            <small>
-                <%= link_to "Edit", edit_quiz_path(quiz)%>
-            </small>
-            <small>
-                <%= link_to "Delete", quiz_path(quiz), method: :delete, data: {confirm: "Are you sure?"}%>
-            </small>
             
             </div>
 
