@@ -20,7 +20,7 @@
                         </small>
                         <%= 
                             link_to 'Take Quiz', 
-                            user_attempts_path(current_user, quiz: quiz), 
+                            attempt_quiz_path(quiz), 
                             method: :post
                         %>
                     </div>
