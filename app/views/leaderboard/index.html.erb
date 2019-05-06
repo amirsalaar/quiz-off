@@ -1,7 +1,13 @@
 
 <div class="form-padding">
 
-    <h1>Leaderboard</h1>
+    <div class="row welcome text-center">
+		<div class="col-12">
+            <h1 class="display-4">Leaderboard</h1>
+        </div>
+	</div>
+		<hr>
+  
     <ul>
         <% @users.each do |loopeduser| %>
             <% if loopeduser.role == 2 %>

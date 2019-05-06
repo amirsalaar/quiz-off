@@ -6,7 +6,7 @@
 		<div class="col-12">
             <div class="quiz-title">
             <h1 class="display-4"><i class="far fa-question-circle"></i><%= @quiz.title %><i class="far fa-question-circle"></i></h1>
-            <button><%= link_to 'Create Question', new_quiz_question_path(@quiz) %></button>
+            <button class="btn btn-warning"><%= link_to 'Create Question', new_quiz_question_path(@quiz) %></button>
             </div>
 		</div>
 		<hr>
@@ -21,6 +21,12 @@
                     Posted <%= time_ago_in_words(question.created_at) %> ago
                 </small>
               </div>
+            <small>
+                <%= link_to "Edit", quiz_question_path(@quiz,question)%>
+            </small>
+            <small>
+                <%= link_to "Delete", quiz_question_path(@quiz,question), method: :delete, data: {confirm: "Are you sure?"}%>
+            </small>
             </div>
         </div>
         <% end %>

@@ -1,29 +1,37 @@
-<section>
-    <p><strong><%= @question.body %></strong></p>
-    <%= @question.body %>
-</section>
+<div class="container-fluid">
 
-<section>
-  <h3>Answers</h3>
-  
+    <div class="row welcome text-center">
+		<div class="col-12">
+            <div class="quiz-title">
+         <h3><%= @question.body %></h3>
+            </div>
+		</div>
+		<hr>
+	</div>
+
+
+
+
   <%= form_with(model: @answer,url:answer_quiz_question_path(@quiz,@question), local: true) do |form| %>
-    <div class="form-group">
-            <%= form.label 'Answer choice', class:"answer-label" %> <br>
+  
 
-             <% @answers.each do |answer| %>
-
+    <div class="form-group mx-4">
+            <%= form.label 'Answers', class:"answer-label" %> <br>
+            <div class="card my-2 py-2">
+             <% @answers.each do |answer|%>
             <div class="custom-control custom-radio ">
                 <%= form.radio_button :answer_id, answer.id  %>
                 <%= form.label :Answer_choices,  "#{answer.body}", class:"answer-radio" %>
             </div>
 
              <% end %>
-     <%= form.submit "Answer" %>
-        </div>
-
-    
-
+             </div>
+             <%= form.submit "Answer" ,class:"btn btn-warning"%>
+    </div>
     <% end %>
 
-</section>
+
+    </div>
+
+
 

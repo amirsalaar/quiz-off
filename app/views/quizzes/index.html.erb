@@ -1,6 +1,11 @@
-<div class="form-padding">
-    <h1>Quizzes</h1>
-    <button><%= link_to 'Create Quiz', new_quiz_path %></button>
+
+        <div class="row welcome text-center">
+		<div class="col-12">
+            <h1 class="display-4">Quizzes</h1>
+            <button class="btn btn-warning new-quiz-btn"><%= link_to 'Create Quiz', new_quiz_path %></button>
+            </div>
+		</div>
+		<hr>
     <ul>
         <% @quizzes.each do |quiz| %>
             <div class="my-3">
@@ -15,12 +20,20 @@
                         </small>
                         <%= 
                             link_to 'Take Quiz', 
-                            user_attempts_path(current_user, quiz: quiz), 
+                            attempt_quiz_path(quiz), 
                             method: :post
                         %>
                     </div>
                 </div>
+            <small>
+                <%= link_to "Edit", edit_quiz_path(quiz)%>
+            </small>
+            <small>
+                <%= link_to "Delete", quiz_path(quiz), method: :delete, data: {confirm: "Are you sure?"}%>
+            </small>
+            
             </div>
+
         <% end %>
     </ul>
 </div>

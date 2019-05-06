@@ -45,6 +45,7 @@ gem 'popper_js', '~> 1.14.5'
 gem 'letter_opener'
 gem "selectize-rails"
 gem 'font-awesome-sass', '~> 5.8.1'
+gem 'bootstrap-sass'
 
 
 group :development, :test do

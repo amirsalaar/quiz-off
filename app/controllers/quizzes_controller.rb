@@ -1,5 +1,5 @@
 class QuizzesController < ApplicationController
-    before_action :find_quiz, only: [:show, :edit, :update, :destroy, :finish]
+    before_action :find_quiz, only: [:show, :edit, :update, :destroy, :finish, :attempt]
     before_action :find_user, only: [:new, :edit, :update, :create]
     before_action :authorize, only: [:edit, :update, :destroy]
 
@@ -56,6 +56,16 @@ class QuizzesController < ApplicationController
         attempt = Attempt.find_by(quiz_id: @quiz.id, user_id: current_user.id)
         flash[:success] = "You got #{attempt.result}"
         redirect_to quizzes_path
+    end
+
+    def attempt
+        @attempt = Attempt.new(
+            user: current_user,
+            quiz: @quiz,
+            score: :null
+        )   
+        @attempt.save
+        redirect_to quiz_path(@quiz)
     end
 
     private
