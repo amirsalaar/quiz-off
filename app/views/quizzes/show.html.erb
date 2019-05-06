@@ -6,6 +6,7 @@
 		<div class="col-12">
             <div class="quiz-title">
             <h1 class="display-4"><i class="far fa-question-circle"></i><%= @quiz.title %><i class="far fa-question-circle"></i></h1>
+            <button><%= link_to 'Create Question', new_quiz_question_path(@quiz) %></button>
             </div>
 		</div>
 		<hr>
@@ -23,4 +24,5 @@
             </div>
         </div>
         <% end %>
+        <button type="submit"><%= link_to 'Finish', quiz_path(@quiz) %></button>
 </div>
