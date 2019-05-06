@@ -1,3 +1,23 @@
+hr{
+    color:#ffc107;
+}
+// leaderbox
+
+.leader-box{
+    display: flex
+}
+
+.total-box{
+    flex:3;
+}
+.you-box{
+    flex:1;
+    margin-top: 6em;
+}
+.you-card{
+    padding: 0.8em;
+}
+
 // dashbord
 .dash-li {
     margin-right: 2em;
