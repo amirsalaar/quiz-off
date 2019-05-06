@@ -1,7 +1,10 @@
 class QuestionsController < ApplicationController
     before_action :authenticate_user!, except: [:show]
-    before_action :find_question, only: [ :edit, :update, :destroy]
-    before_action :find_quiz, only: [:create, :edit, :update]
+    before_action :find_question, only: [ :edit, :update, :destroy, :answer]
+    before_action :find_quiz, only: [:create, :edit, :update, :answer]
+    before_action :authorize, only: [:create, :update, :destroy]
+
+
 
     def new
         @question = Question.new
@@ -27,6 +30,7 @@ class QuestionsController < ApplicationController
     def show
         @quiz = Quiz.find(params[:quiz_id]) # .questions.find(params[:id])
         @question = @quiz.questions.find(params[:id])# Question.new question_params
+        @answers = Answer.where({question_id: @question.id})
     end
 
     def update
@@ -41,11 +45,26 @@ class QuestionsController < ApplicationController
         @question.destroy
         redirect_to quiz_path(@question.quiz_id)
     end
+    
+    def answer
+        # questions = @quiz.questions.order(created_at: :desc)
+        attempt = Attempt.find_by(quiz_id: @quiz.id, user_id: current_user.id)
+        if params[:answer_id]
+            answer = Answer.find(params[:answer_id])
+            if answer[:is_correct] == true
+                attempt.answer_tracks +=1
+                attempt.save
+            end
+            # redirect_to quiz_question_path(@quiz.id, questions[:id])
+        end 
+        redirect_to quiz_path(@quiz)
+        # render json: params
+    end
 
     private
 
     def question_params
-        params.require(:question).permit(:body, answers_attributes: [{:body, is_correct: true}])
+        params.require(:question).permit(:body, answers_attributes: [:body, :is_correct])
     end
 
     def find_quiz
@@ -54,6 +73,10 @@ class QuestionsController < ApplicationController
 
     def find_question
         @question = Question.find(params[:id])
+    end
+
+    def authorize
+        redirect_to root_path, alert: 'Not Authorized' unless can?(:crud, @question)
     end
 
 end
