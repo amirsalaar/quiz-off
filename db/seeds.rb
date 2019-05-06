@@ -41,12 +41,12 @@ users = User.all
     updated_at: created_at,
     user: users.sample
   })
-  10.times do
+  5.times do
     list_answers = []
     4.times do
         list_answers << { body: (Faker::Hacker.say_something_smart)[0..15] }
     end
-    list_answers[rand(3)].merge!(is_correct: true)
+    list_answers[0].merge!(is_correct: true)
      question = Question.create({
        quiz_id: quiz.id,
       body: Faker::GreekPhilosophers.quote,
