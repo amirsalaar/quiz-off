@@ -8,12 +8,13 @@ class AttemptsController < ApplicationController
 
     def create
         # render json: params 
-        attempt = Attempt.new(
+        @attempt = Attempt.new(
             user: current_user,
-            quiz_id: @quiz
-            # score: score
-        )
-        redirect_to quiz_path(@quiz)
+            quiz_id: @quiz.id,
+            score: 0
+        )   
+        @attempt.save
+        redirect_to quiz_path(@quiz, attempt: @attempt)
     end 
 
     private
