@@ -10,7 +10,8 @@ super_user = User.create({
   last_name: "Snow",
   email: "js@winterfell.gov",
   password: PASSWORD,
-  role: 2
+  role: 2,
+  total_points: rand(0..20_000)
 })
 
 10.times do
