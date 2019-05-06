@@ -59,14 +59,6 @@ quizzes = Quiz.all
 
 questions = Question.all
 
-# questions.each do |q|
-#     4.times.map do
-#       Answer.create({
-#             body: Faker::ProgrammingLanguage.name
-#         })
-#     end
-# end
-
 answers = Answer.all
 
 puts Cowsay.say("Generated #{ quizzes.count } quizzes", :ghostbusters)
