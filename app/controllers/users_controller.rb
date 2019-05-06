@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :change_password, :update_password, :dashboard]
   before_action :find_user, only: [:edit, :update, :change_password, :update_password, :dashboard]
-  before_action :authorize, only: [:dashboard]
+  #before_action :authorize, only: [:dashboard]
 
   def new
     @user = User.new
@@ -33,8 +33,16 @@ class UsersController < ApplicationController
 
   def dashboard
     @quizzes = Quiz.order(created_at: :desc)
-    @created_quizzes = Quiz.order(created_at: :desc).where( user_id: @user.id )
-    @attempted_quizzes = Attempt.order(created_at: :desc).where( user_id: @user.id )
+
+    #only grab created quizzes if a instructor is logged in
+    if @user.role == 1
+      @created_quizzes = Quiz.order(created_at: :desc).where( user_id: @user.id )
+    end
+
+    #grab attempted quizzes for both instructors and students
+    if @user.role == 1 || @user.role == 2
+      @attempted_quizzes = Attempt.order(created_at: :desc).where( user_id: @user.id )
+    end
   end
   
   def change_password
@@ -55,6 +63,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def dashboard
+    @quizzes = Quiz.order(created_at: :desc)
+    #only grab created quizzes if a instructor is logged in
+    if @user.role == 1
+      @created_quizzes = Quiz.order(created_at: :desc).where( user_id: @user.id )
+    end
+
+    #grab attempted quizzes for both instructors and students
+    if @user.role == 1 || @user.role == 2
+      @attempted_quizzes = Attempt.order(created_at: :desc).where( user_id: @user.id )
+    end
+  end
 
   private
 

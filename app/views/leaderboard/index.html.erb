@@ -1,0 +1,32 @@
+
+<div class="form-padding">
+
+    <h1>Leaderboard</h1>
+    <ul>
+        <% @users.each do |loopeduser| %>
+            <% if loopeduser.role == 2 %>
+                <div class="my-3">
+                    <div class="card">
+                        <div class="card-body card-height">
+                            <h4><%= loopeduser.first_name %> <%= loopeduser.last_name %>   <%= pluralize(loopeduser.total_points, "points")%></h4> 
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        <% end %>
+    </ul>
+    <ul>
+        <div class="my-3">
+            <div class="card">
+                <div class="card-body card-height">
+                    <h4>YOU 
+                    <p>
+                        <%= pluralize(@user.total_points, "points") %>
+                    </p>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </ul>
+ 
+</div>
