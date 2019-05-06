@@ -64,11 +64,7 @@ class QuestionsController < ApplicationController
     private
 
     def question_params
-<<<<<<< Updated upstream
         params.require(:question).permit(:body, answers_attributes: [:body, :is_correct])
-=======
-        params.require(:question).permit(:body, answers_attributes: [{body: :body, is_correct: true}])
->>>>>>> Stashed changes
     end
 
     def find_quiz
