@@ -1,7 +1,9 @@
 class QuestionsController < ApplicationController
     before_action :authenticate_user!, except: [:show]
     before_action :find_question, only: [ :edit, :update, :destroy]
-    before_action :find_quiz, only: [:create, :edit, :update]
+    before_action :find_quiz, only: [:create, :edit, :update, :destroy]
+    before_action :authorize, only: [:create, :update, :destroy]
+
 
     def new
         @question = Question.new
@@ -54,6 +56,10 @@ class QuestionsController < ApplicationController
 
     def find_question
         @question = Question.find(params[:id])
+    end
+
+    def authorize
+        redirect_to root_path, alert: 'Not Authorized' unless can?(:crud, @question)
     end
 
 end
