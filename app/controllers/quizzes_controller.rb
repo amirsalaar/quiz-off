@@ -53,8 +53,8 @@ class QuizzesController < ApplicationController
     end
 
     def finish
-        attempt = Attempt.find_by(quiz_id: @quiz.id, user_id: current_user.id)
-        flash[:success] = "You got #{attempt.result}"
+        attempt = Attempt.where(quiz_id: @quiz.id, user_id: current_user.id).last
+        flash[:success] = "You got #{attempt.result} %"
         redirect_to quizzes_path
     end
 

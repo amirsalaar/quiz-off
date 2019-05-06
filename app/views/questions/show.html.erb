@@ -18,7 +18,7 @@
     <div class="form-group mx-4">
             <%= form.label 'Answers', class:"answer-label" %> <br>
             <div class="card my-2 py-2">
-             <% @answers.each do |answer|%>
+             <% @answers.shuffle.each do |answer|%>
             <div class="custom-control custom-radio ">
                 <%= form.radio_button :answer_id, answer.id  %>
                 <%= form.label :Answer_choices,  "#{answer.body}", class:"answer-radio" %>
