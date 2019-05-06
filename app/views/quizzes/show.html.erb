@@ -24,9 +24,5 @@
             </div>
         </div>
         <% end %>
-        <button type="submit"><%= link_to 'Finish', quiz_path(@quiz) %></button>
-        <%=
-          link_to 'Attempt Quiz',
-          user_attempts_path(current_user)
-        %>
+        <%= link_to 'Finish', finish_quiz_path(@quiz) %>
 </div>
