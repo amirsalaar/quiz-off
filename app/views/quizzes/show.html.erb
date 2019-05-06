@@ -21,6 +21,12 @@
                     Posted <%= time_ago_in_words(question.created_at)  %> ago
                 </small>
               </div>
+            <small>
+                <%= link_to "Edit", quiz_question_path(@quiz,question)%>
+            </small>
+            <small>
+                <%= link_to "Delete", quiz_question_path(@quiz,question), method: :delete, data: {confirm: "Are you sure?"}%>
+            </small>
             </div>
         </div>
         <% end %>

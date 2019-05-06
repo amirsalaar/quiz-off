@@ -15,7 +15,15 @@
                         </small>
                     </div>
                 </div>
+            <small>
+                <%= link_to "Edit", edit_quiz_path(quiz)%>
+            </small>
+            <small>
+                <%= link_to "Delete", quiz_path(quiz), method: :delete, data: {confirm: "Are you sure?"}%>
+            </small>
+            
             </div>
+
         <% end %>
     </ul>
 </div>
