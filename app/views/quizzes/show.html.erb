@@ -31,7 +31,9 @@
             </span> 
           </small>
         <% end %>
-        <% if @current_user.role = 2 %>
+    </div>
+</div>
+        <% if current_user.id != question.quiz.user_id %>
                 <%= link_to 'Finish', finish_quiz_path(@quiz) %>
         <% end %>
-</div>
+    <% end %>

@@ -54,8 +54,9 @@ class QuizzesController < ApplicationController
 
     def finish
         attempt = Attempt.where(quiz_id: @quiz.id, user_id: current_user.id).last
-        flash[:success] = "You got #{attempt.result} points"
-        @user.total_points += attempt.result
+        flash[:success] = "You got #{attempt.result} % !"
+        attempt.answer_tracks +=1
+        @user.total_points += (attempt.result/100) * attempt.quiz.points
         @user.save
         redirect_to quizzes_path
     end
