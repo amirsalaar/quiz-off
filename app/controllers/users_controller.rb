@@ -82,6 +82,8 @@ class UsersController < ApplicationController
   end
   
   def authorize
-    redirect_to root_path, alert: 'Not Authorized' unless can?(:crud, @user)
+    redirect_to root_path unless can?(:crud, @user)
+    flash[:danger] = 'Not Authorized' 
   end
+  
 end
