@@ -70,7 +70,7 @@ class QuestionsController < ApplicationController
     private
 
     def question_params
-        params.require(:question).permit(:body, answers_attributes: [:body, :is_correct])
+        params.require(:question).permit(:body, answers_attributes: [{body: :body, is_correct: true}])
     end
 
     def find_quiz
