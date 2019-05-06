@@ -1,5 +1,5 @@
 class QuizzesController < ApplicationController
-    before_action :find_quiz, only: [:show, :edit, :update, :destroy]
+    before_action :find_quiz, only: [:show, :edit, :update, :destroy, :finish]
     before_action :find_user, only: [:new, :edit, :update, :create]
     before_action :authorize, only: [:edit, :update, :destroy]
 
@@ -50,6 +50,12 @@ class QuizzesController < ApplicationController
     def destroy
         @quiz.destroy
         redirect_to root_path
+    end
+
+    def finish
+        attempt = Attempt.find_by(quiz_id: @quiz.id, user_id: current_user.id)
+        flash[:success] = "You got #{attempt.result}"
+        redirect_to quizzes_path
     end
 
     private

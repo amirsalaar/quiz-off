@@ -18,6 +18,9 @@ Rails.application.routes.draw do
         post :answer
       end
     end
+    member do
+      get :finish
+    end
   end
 
 end
