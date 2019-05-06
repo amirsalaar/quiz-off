@@ -53,17 +53,11 @@ class QuizzesController < ApplicationController
     end
 
     def finish
-<<<<<<< HEAD
         attempt = Attempt.where(quiz_id: @quiz.id, user_id: current_user.id).last
         flash[:success] = "You got #{attempt.result} points"
         @user.total_points += attempt.result
         @user.save
         redirect_to quizzes_path
-=======
-        attempt = Attempt.find_by(quiz_id: @quiz.id, user_id: current_user.id)
-        flash[:success] = "You got #{attempt.result}"
-        redirect_to dashboard_user_path
->>>>>>> origin/integration
     end
 
     def attempt
