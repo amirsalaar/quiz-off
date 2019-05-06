@@ -55,7 +55,7 @@ class QuestionsController < ApplicationController
     
     def answer
         # questions = @quiz.questions.order(created_at: :desc)
-        attempt = Attempt.find_by(quiz_id: @quiz.id, user_id: current_user.id)
+        attempt = (Attempt.where(quiz_id: @quiz.id, user_id: current_user.id)).last
         if params[:answer_id]
             answer = Answer.find(params[:answer_id])
             if answer[:is_correct] == true

@@ -18,6 +18,11 @@ class Ability
         user != quiz.user_id
       end
 
+      # teacher is the owner of the quiz?
+      can(:change, Quiz) do |quiz|
+        user.role == 1 && quiz.user == user
+      end
+
       # #admin
       # can(:crud, Quiz) do |quiz|
       #   quiz.user_id == user && user.role == 3 
