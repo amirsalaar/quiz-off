@@ -1,8 +1,11 @@
-<div class="form-padding">
-    <div class="title-zone">
-        <h1>Quizzes</h1>
-        <button class="btn btn-warning new-quiz-btn"><%= link_to 'Create Quiz', new_quiz_path %></button>
-    </div>
+
+        <div class="row welcome text-center">
+		<div class="col-12">
+            <h1 class="display-4">Quizzes</h1>
+            <button class="btn btn-warning new-quiz-btn"><%= link_to 'Create Quiz', new_quiz_path %></button>
+            </div>
+		</div>
+		<hr>
     <ul>
         <% @quizzes.each do |quiz| %>
             <div class="my-3">
