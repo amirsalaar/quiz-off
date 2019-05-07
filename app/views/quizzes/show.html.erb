@@ -33,7 +33,7 @@
         <% end %>
     </div>
 </div>
-        <% if current_user.id != question.quiz.user_id %>
+    <% end %>
+        <% if current_user.id != @quiz.user_id %>
                 <%= link_to 'Finish', finish_quiz_path(@quiz) %>
         <% end %>
-    <% end %>
