@@ -1,31 +1,15 @@
 # README
 
-Quiz Off is an interactive quiz making and taking platform.
+Quiz Off is an interactive quiz making and taking platform, built over a course of weekend as a hackathon.
 
+Contributers:
+Amir, Anson, Gagan, Kevin, Kota, Nina
 
-Contributers
+Tech Stack:
+1. Back-end: Ruby on Rails (Ruby version: 2.6.1, Rails version: 5.2.3)
+2. Front-end: HTML, CSS, JavaScript, Bootstrap v.4
+3. Database: PostgreSQL, ActiveRecord
 
-Amir
-Anson
-Gagan
-Kevin - Git Manager
-Kota
-Nina - Project Manager
-
-
-Tech used:
-
-Ruby version -
-2.6.1
-
-Rails version -
-5.2.3
-
-Postgreseql
-
-Bootstrap
-
-Bcrypt
-
-Cancancan
-
+User roles: 
+1. Teachers
+2. Students
