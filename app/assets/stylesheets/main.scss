@@ -1,0 +1,104 @@
+hr{
+    color:#ffc107;
+}
+// leaderbox
+
+.leader-box{
+    display: flex
+}
+
+.total-box{
+    flex:3;
+}
+.you-box{
+    flex:1;
+    margin-top: 6em;
+}
+.you-card{
+    padding: 0.8em;
+}
+
+// dashbord
+.dash-li {
+    margin-right: 2em;
+}
+// quizzes new form
+.quizz-radio {
+    margin-left: 1em;
+}
+
+.points_form {
+    width: 30%;
+}
+.form-label {
+    font-size:1.5em;
+}
+.form_card {
+    padding: 2em;
+    background: lightgray;
+}
+// .title-zone{
+//     display: flex;
+   
+// }
+// .new-quiz-btn{
+//     flex-direction: row; 
+//     padding: 5em;
+//     font-size:5em;
+// }
+
+// quizzes show page
+
+i {
+ margin-left: 0.5em;
+ margin-right: 0.5em;
+}
+.question-list {
+    list-style: none;
+}
+
+.question-card {
+    padding: 0.5em;
+}
+.welcome hr {
+    border-top: 2px solid #b4b4b4;
+    width: 95%;
+    margin-top: 0.3rem;
+    margin-bottom: 1rem;
+  }
+.card{
+    border-color: #b4b4b4;
+}
+.card-title {
+    font-size: 1.5em;
+}
+
+.question-card {
+   background: rgb(220, 220, 220);
+
+}
+
+.dropdown-menu {
+    background: #b4b4b4;
+}
+
+// @media (min-width: 768px) {
+//     .form-padding {
+//         padding-right: 5rem;
+//         padding-left: 5rem;
+//     }
+// }
+
+// @media (min-width: 992px) {
+//     .form-padding {
+//         padding-right: 10rem;
+//         padding-left: 10rem;
+//     }
+// }
+
+// @media (min-width: 1200px) {
+//     .form-padding {
+//         padding-right: 20rem;
+//         padding-left: 20rem;
+//     }
+// }

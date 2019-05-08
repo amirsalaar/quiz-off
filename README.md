@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Quiz Off is an interactive quiz making and taking platform, built over a course of weekend as a hackathon.
 
-Things you may want to cover:
+Contributers:
+Amir, Anson, Gagan, Kevin, Kota, Nina
 
-* Ruby version
+Tech Stack:
+1. Back-end: Ruby on Rails (Ruby version: 2.6.1, Rails version: 5.2.3)
+2. Front-end: HTML, CSS, JavaScript, Bootstrap v.4
+3. Database: PostgreSQL, ActiveRecord
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+User roles: 
+1. Teachers
+2. Students

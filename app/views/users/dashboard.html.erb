@@ -1,0 +1,9 @@
+<div class="container">
+    <% if current_user.role == 1 %>
+        <%= render "teacher_dashboard" %>
+    <% end %>
+
+    <% if current_user.role == 2 %>
+        <%= render "student_dashboard" %>
+    <% end %>
+</div>

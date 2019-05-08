@@ -1,0 +1,29 @@
+<div class="container card card-body col-12 col-md-8 col-lg-6">
+    <h1>Sign in</h1>
+
+    <div class="form-group">
+
+        <%= form_with url: session_path, local: true do |f| %>
+
+            <div class="form-group">
+                <%= f.label :email %>
+                <%= f.email_field :email, class: 'form-control', placeholder: 'Email Address' %>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :password %>
+                <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
+            </div>
+
+
+            <%= f.submit "Sign In", class: 'btn btn-warning col-8 col-md-3' %>
+
+            <div class='row d-flex'>
+                <div class="ml-auto ">
+                    <%= link_to 'Sign Up', new_user_path, class: 'btn text-primary' %>/<%= link_to 'Forgot pasword?', new_user_path, class: 'btn text-primary' %>
+                </div>
+            </div>
+
+        <% end %>
+    </div>
+</div>

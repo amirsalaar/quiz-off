@@ -1,0 +1,23 @@
+<div class="form-padding">
+    <h2 class="mt-2">Edit Question</h2>
+    <%= form_with model: @question, url: quiz_question_path(@question.quiz_id, @question), local: true do |f| %> 
+    <div class="form-group mt-3">
+            <%= f.label :body %>
+            <%= f.text_area :body, class: "form-control" %>
+        </div>
+        <% @question.answers.each do |answer| %>
+        <% f.fields_for :answers do |builder| %>
+        <div class="form-group mt-3">
+            <%= builder.label :body, "Answer #{@answer_count}" %>
+            <%= builder.text_field :body, class: "form-control" %>
+            <%# The line above still needs work %>
+        </div>
+        <%
+            @answer_count += 1 
+            end 
+        %>
+        <% end %>
+        <%= f.submit class: "btn btn-outline-primary mr-2" %>
+        <%= link_to 'Cancel', edit_quiz_question_path(@question), class: "btn btn-outline-danger" %>    
+    <% end %>
+</div>
